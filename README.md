@@ -7,14 +7,12 @@ data "azurerm_subscription" "primary" {}
 
 module "extended_role_definition" {
   source  = "jibinpb/extended-role-definition/azurerm"
-  version = "0.0.2"
-
 
   builtin_roles = [
     "API Management Service Contributor",
     "Storage Blob Data Owner",
   ]
-  custom_role_name        = "SAMPLE AZR CUSTOM RESOURCE ROLE"
+  custom_role_name        = "GBN SAMPLE AZR CUSTOM RESOURCE ROLE MODULE"
   custom_role_scope       = data.azurerm_subscription.primary.id
   custom_role_description = "Custom role for testing"
   custom_role_assignable_scopes = [
@@ -44,4 +42,5 @@ output "data_actions" {
 output "not_data_actions" {
   value = module.extended_role_definition.not_actions
 }
+
 ```
